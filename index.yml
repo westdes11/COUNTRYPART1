@@ -7,12 +7,66 @@ contacts:
   - displayName: westdes11
     pictureUrl: https://avatars.githubusercontent.com/u/175260045?v=4
     homePageUrl: https://github.com/westdes11
+files:
+  - path: course1/unit1/lesson1/lessonpart1/COUNTRYPART1.PY
+    content: |-
+      def display_menu():
+          print("The Country List Program")
+          print("COMMAND MENU")
+          print("view - View a country")
+          print("add  - Add a country")
+          print("del  - Delete a country")
+          print("exit - Exit program")
+
+      def init_country_dict():
+          return {'US': 'United States', 'CA': 'Canada', 'MX': 'Mexico'}
+
+      def view_country(countries):
+          print("\nCountry codes:")
+          for code in countries:
+              print(code)
+          code = input("Enter country code: ").upper()
+          if code in countries:
+              print(f"{code} is {countries[code]}")
+          else:
+              print("Invalid country code.")
+
+      def add_country(countries):
+          code = input("Enter country code: ").upper()
+          if code in countries:
+              print("That country already exists.")
+          else:
+              name = input("Enter country name: ")
+              countries[code] = name
+              print(f"{code} added.")
+
+      def delete_country(countries):
+          code = input("Enter country code to delete: ").upper()
+          if code in countries:
+              del countries[code]
+              print(f"{code} deleted.")
+          else:
+              print("Invalid country code.")
+
+      def main():
+          countries = init_country_dict()
+          display_menu()
+
+          while True:
+              command = input("\nCommand: ").lower()
+              if command == "view":
+                  view_country(countries)
+              elif command == "add":
+                  add_country(countries)
+              elif command == "del":
+                  delete_country(countries)
+              elif command == "exit":
+                  print("Exiting program.")
+                  break
+              else:
+                  print("Not a valid command.")
+
+      if __name__ == "__main__":
+          main()
 units:
-  - id: unit1
-    title: Unit 1
-    lessons:
-      - id: lesson1
-        title: Lesson 1
-        lessonParts:
-          - id: lessonpart1
-            title: Page 1
+  - unit1/index.yml
